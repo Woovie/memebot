@@ -1,5 +1,7 @@
 FROM python:latest
-WORKDIR /basedir
 COPY . /basedir
+WORKDIR /basedir
+
+RUN pip install -r requirements.txt
 
 RUN ["python", "main.py"]
