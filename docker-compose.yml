@@ -2,10 +2,12 @@ version: '3'
 services:
     python-bot:
         build: .
+        container_name: memebot
         networks:
             - python-bot
     mongodb:
         image: mongodb:latest
+        container_name: mongodb_memebot
         networks:
             - python-bot
 networks:

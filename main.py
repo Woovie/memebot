@@ -3,7 +3,7 @@ import configparser, discord, glob, random, pymongo, uuid
 config = configparser.ConfigParser()
 config.read('config.ini')
 
-mong_client = pymongo.MongoClient()
+mong_client = pymongo.MongoClient('mongodb_memebot')
 
 db = mong_client['memebot']
 
