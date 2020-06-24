@@ -2,3 +2,11 @@ version: '3'
 services:
     python-bot:
         build: .
+        networks:
+            - python-bot
+    mongodb:
+        image: mongodb:latest
+        networks:
+            - python-bot
+networks:
+    python-bot:
