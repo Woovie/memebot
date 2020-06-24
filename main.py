@@ -20,7 +20,7 @@ class Meme():
     def __init__(self):
         self.meme_folder = config['memes']['folder']
         print(self.meme_folder)
-        self.meme_list = glob.glob(self.meme_folder)
+        self.meme_list = glob.glob(f"{self.meme_folder}/*")
         self.meme = None
     
     def select(self):
