@@ -1,0 +1,8 @@
+version: '3'
+services:
+    python-bot:
+        image: python:latest
+        volumes:
+            - ./memes:/memes
+volumes:
+    memes: {}
