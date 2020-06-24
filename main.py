@@ -22,9 +22,8 @@ class DiscordClient(discord.Client):
                 meme_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, meme.meme))
                 query = {"uuid": meme_uuid}
                 result = collection.find(query)
-                for item in result:
-                    print(item)
-                if len(result) == 0:
+                print(type(result))
+                if 1 == 0:
                     insertable = {"uuid": meme_uuid, "count": 1}
                     collection.insert(insertable)
                 else:
