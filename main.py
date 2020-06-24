@@ -24,7 +24,7 @@ class DiscordClient(discord.Client):
                 result_count = collection.count_documents(query)
                 if result_count == 0:
                     insertable = {"uuid": meme_uuid, "count": 1}
-                    collection.insert(insertable)
+                    collection.insert_one(insertable)
                 elif result_count == 1:
                     results = collection.find(query)
                     for result in results:
