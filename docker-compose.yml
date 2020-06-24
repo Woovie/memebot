@@ -6,7 +6,7 @@ services:
         networks:
             - python-bot
     mongodb:
-        image: mongodb:latest
+        image: mongo:latest
         container_name: mongodb_memebot
         networks:
             - python-bot
