@@ -29,8 +29,8 @@ class DiscordClient(discord.Client):
                     results = collection.find(query)
                     for result in results:
                         insertable = result
-                    insertable["count"] = insertable["count"] + 1
-                    collection.update_one(query, insertable)
+                    new_value = { "$set": { "count": insertable["count"] + 1}}
+                    collection.update_one(query, new_value)
                 else:
                     print("oh shit oh shit oh shit")
                 await message.channel.send(file=loaded_meme)
