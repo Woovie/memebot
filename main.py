@@ -21,16 +21,18 @@ class DiscordClient(discord.Client):
                 loaded_meme = discord.File(meme.meme)
                 meme_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, meme.meme))
                 query = {"uuid": meme_uuid}
-                result = collection.find(query)
-                for x in result:
-                    print(x)
-                if 1 == 0:
+                result_count = collection.count_documents(query)
+                if result_count == 0:
                     insertable = {"uuid": meme_uuid, "count": 1}
                     collection.insert(insertable)
-                else:
-                    insertable = result[0]
+                elif result_count == 1:
+                    results = collection.find(query)
+                    for result in results:
+                        insertable = result
                     insertable["count"] = insertable["count"] + 1
                     collection.update_one(query, insertable)
+                else:
+                    print("oh shit oh shit oh shit")
                 await message.channel.send(file=loaded_meme)
             else:
                 await message.channel.send("Failed to load any memes! Check logs.")
